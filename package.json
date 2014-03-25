@@ -1,0 +1,17 @@
+{
+  "name": "btcspeak",
+  "version": "1.0.0",
+  "description": "reads large bitcoin transactions aloud",
+  "main": "btcspeak.coffee",
+  "scripts": {
+  },
+  "repository": "https://github.com/payload/btcspeak.git",
+  "author": "payload",
+  "license": "AGPL",
+  "dependencies": {
+    "ws": ">=0.4.31"
+  },
+  "engines": {
+    "coffee-script": ">=1.6.3"
+  }
+}
