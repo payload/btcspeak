@@ -33,8 +33,9 @@ class BtcSpeak
     message: (data, flags) =>
         data            = JSON.parse(data)
         out_sum         = sum (out.value / 100000000 for out in data.x.out)
-        btc             = Math.floor out_sum
-        console.log btc                 if btc > 0
+        btc             = format_width { width: 10, str: Math.floor out_sum }
+        url             = "https://blockchain.info/en/tx/#{data.x.hash}"
+        console.log btc, url            if btc > 0
         text            = ""+btc        if btc > 0
         text            = "over 9000"   if btc > 9000
         @say_text text                  if text
@@ -46,5 +47,12 @@ class BtcSpeak
 
 sum             = (arr) ->
     arr.reduce (a, b) -> a + b
+
+format_width    = ({ width, char, str }={}) ->
+    str             = ''+str
+    char            = if char then ''+char else ' '
+    diff            = width - str.length
+    return str if diff <= 0
+    return str + (char for i in [1..diff]).join('')
 
 main()
